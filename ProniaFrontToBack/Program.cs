@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using ProniaFrontToBack.DAL;
+using System;
+
 namespace ProniaFrontToBack
 {
     public class Program
@@ -8,6 +12,8 @@ namespace ProniaFrontToBack
 
             
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<AppDbContext>(opt =>opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
             var app = builder.Build();
 
